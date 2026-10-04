@@ -1,0 +1,85 @@
+Git commands :-
+
+staging : It is a temporary space for commit(save). Corresponding command : git add  
+merge : Combining the changes from two branches into one.
+
+-- Initialize or tracking
+
+1. git init : It start tracking changes in repository.
+
+-- Staging
+
+2. git add --all/git add -A: It starts the entire repository to staging(temporary space) and ready to commit(save).
+3. git add . : It only stage current path or repository.
+4. git add * : It only stage new or modified things in repository. Note : Not deleted ones.
+
+-- Remove staging from after git add
+
+5. git reset : It removes from staged state to unstaged state or git add --all.
+6. git reset HEAD~ : It undo the last commit and remove the staged state of the repository. Note : This command to use after the commit. 
+9. git reset --hard : It should use after deleted files. It restore or undo the staged state of entire repository or files in physical.
+
+-- Types of rm files using git rm
+
+7. git rm file_name : It delete the file and stage the deleted file. Note : Can do two steps in one command.
+8. git rm -f file_name : It delete the file forcefully. 
+10. git rm --cached file_name : It remove the file or repository from stage state, not in physical. 
+11. git rm -r repository_name : It removes the repository or folder and also removes another folders inside the current folder. That why 'r' = recursively.
+
+-- View Commits
+
+12. git log : It shows the commit history.
+13. git log --oneline : It shows the last commit in compact and cleaner way.
+
+-- Move to Commits 
+
+14. git switch or checkout commit_id : It helps to move back to previous development phases or commits. Note : first identify which commit should wanted use 'git log --oneline'. 
+15. git diff commit_id commit_id : It shows the difference of two commits.
+
+-- Branching 
+
+16. git branch : It shows the all branches in the repository.
+17. git branch branch_name : To create new branch in the repository.
+18. git checkout branch_name : To switch other branches.
+19. git switch branch_name : To switch other branches.
+
+-- Merge 
+
+20. git merge branch_name -m "Message" : It merges the two branches into merging branch. ie : if a person who stay on non-master or non-main branch, person made changes in development branch and main branch. First update or merge the development branch of main then, switch to main and update or merge other branches (development) into main branch. Note : if any changes in main, it is relevant to update or merge the other branches (development) in the repository.
+
+Note : Conflict is happens, when two branches changes in one file without update or merge. 
+
+-- Push, Fetch, Pull 
+
+21. git push : It sends the local changes to the remote.
+22. git fetch : It brings the remote changes into the local repository. But, not merge them yet. Note : after git fetch then use git merge. 
+23. git pull : It brings the remote changes into the merge repository with merge. Note : git pull : fetch + merge 
+24. git push origin main : It pushes to the main branch to the remote repository. 
+25. git push origin branch_name : It pushes the other branch to the remote repository
+
+-- Git restore
+
+26. git restore or file_name : It restores to the previous commit of a repository or file. Note : git restore use before not used the git add and git commit, when a feature currently building and is not working and can't fix it, this scenario.
+27. git restore --staged file_name or . : It restore from staged state to working directory of previous commit or without deleting or undoing your actual changes. Note : same situation of 26. 
+
+-- Git stash 
+
+Git Stash : It stores the changes temporary and save like stack list. 
+
+28. git stash : It used for to save the changes temporary before git add and commit. Note : If a person working on different branch and another person want to verify new feature on different branch. So, the person work didn't finished the feature and can't use git add and commit before finish the feature. Then, use git stash for temporary save the unstaged and uncommitted version. Person can use switch to different branch and verify the feature
+29. git stash pop : It used for revert back the stashed work. Note : It uses after git stash. 
+30. git stash list : It shows the list of stashes in stack. Note : It used for multiple times used the git stash. 
+31. git stash apply : It uses for multiple time used the git stash and developer wanted to store in stash stack list for future use and restore the saved changes. 
+32. git stash drop : It uses revert back the saved changes and remove list from stash stack list. Note : Go check git stash list, It should be empty list. 
+
+-- Git revert
+
+33. git revert commit_id : It removes the current commit and move to previous commit and creates new or latest commit without deleted the current commit. Note : It uses for track the clean history commit without delete. Scenario : If a person developed feature but, the feature is crashed. So, developer want to fix it without delete the crashed the commit. Use git revert and it creates new or latest commit without delete the crashed commit to track history clean. Git reset and revert : reset discard the current history commit and revert doesn't discard the current history but, creates new or latest commit of fixed version.
+
+-- Git rebase
+
+34. git rebase : It helps to move or reapplies the commits onto a different base commit or it creates linear history. Note : It uses only personal projects. Because, it rewrites the commit history. So, collaborative projects use merge. And multiple developer working on a project if someone rebase it and other developer rebase it, the developer potentially overwrites someone's remote branch history and someone's local copies wouldn't match current the changes and it causes some issues in pull or sync from remote repository. 
+
+-- Git Difference
+
+21. git diff : It shows the changes that whom made but, before commit.
